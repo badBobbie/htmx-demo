@@ -1,0 +1,9 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "user_name": "Bobbie",
+      "permission_list": [1, 3]
+    }
+  ]
+}
