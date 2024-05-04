@@ -1,11 +1,3 @@
 {% for user in users %}
-    <li>
-        <h3>{{ user.user_name }}</h3>
-        <span>
-            Разрешения:
-            {% for permission in user.permission_list %}
-                {{ permission.title }}
-            {% endfor %}
-        </span>
-    </li>
+    {% include 'user-list-item.html' %}
 {% endfor %}

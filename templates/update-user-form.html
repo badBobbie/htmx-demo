@@ -1,0 +1,30 @@
+<form class="d-flex justify-content-between align-items-center w-100"
+      hx-put="/user/{{ user.id }}"
+      hx-trigger="submit"
+      hx-target="#user_{{ user.id }}"
+      hx-swap="outerHTML">
+    <div class="col-auto">
+        <label for="username_{{ user.id }}" class="visually-hidden">Имя</label>
+        <input type="text"
+               name="user_name"
+               value="{{ user.user_name }}"
+               placeholder="Имя"
+               id="username_{{ user.id }}"
+               class="form-control"/>
+    </div>
+    <div class="col-auto">
+        <label for="role_{{ user.id }}" class="visually-hidden">Роль</label>
+        <select name="role" id="role_{{ user.id }}" class="form-select">
+            <option disabled>Роли</option>
+            {% for role in roles %}
+                <option value="{{ role.id }}"
+                        {% if role.id == user.role.id %} selected {% endif %}>
+                    {{ role.title }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="d-flex align-items-center">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+</form>

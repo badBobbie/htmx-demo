@@ -8,4 +8,4 @@ def read_from_json(filename: str) -> dict:
 
 def write_to_json(filename: str, data: dict) -> None:
     with open(filename, "w") as file_data:
-        json.dump(data, file_data)
+        json.dump(data, file_data, indent=2)
