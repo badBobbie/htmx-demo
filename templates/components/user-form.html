@@ -1,0 +1,71 @@
+<h4>
+    {% if user %}
+        Редактирование пользователя
+    {% else %}
+        Добавление пользователя
+    {% endif %}
+</h4>
+<form class="d-flex flex-column justify-content-between align-items-center w-100"
+      {% if user %}
+          hx-put="/user/{{ user.id }}"
+          hx-trigger="submit"
+          hx-target="#user_{{ user.id }}"
+          hx-swap="outerHTML"
+      {% else %}
+          hx-post="/user/create"
+          hx-trigger="submit"
+          hx-target="#user-list"
+          hx-swap="beforeend"
+      {% endif %}
+      hx-on::after-request="this.reset()">
+    <div class="w-100">
+        <label for="username" class="form-label">Имя</label>
+        <input type="text"
+               name="user_name"
+               {% if user %} value="{{ user.user_name }}" {% endif %}
+               placeholder="Имя"
+               id="username"
+               class="form-control"/>
+    </div>
+    {% if not user %}
+        <div class="w-100 mt-4">
+            <label for="login" class="form-label">Логин</label>
+            <input type="text"
+                   name="login"
+                   placeholder="Логин"
+                   id="login"
+                   class="form-control"/>
+        </div>
+    {% endif %}
+    <div class="w-100 mt-4">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="text"
+               name="password"
+               placeholder="Пароль"
+               id="password"
+               class="form-control"/>
+    </div>
+    <div class="w-100 mt-4">
+        <label for="role" class="form-label">Роль</label>
+        <select name="role" id="role" class="form-select">
+            <option disabled>Роли</option>
+            {% for role in roles %}
+                <option value="{{ role.id }}"
+                        {% if user and role.id == user.role.id %} selected {% endif %}>
+                    {{ role.title }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="w-100 mt-4 d-flex justify-content-between align-items-center">
+        <button type="submit" class="btn btn-primary w-50" hx-on::after-request="/user/form/create" hx-target="#user-form" hx-swap="innerHTML">Сохранить</button>
+        {% if user %}
+            <button class="btn btn-secondary"
+                    hx-get="/user/form/create"
+                    hx-target="#user-form"
+                    hx-swap="innerHTML">Отмена</button>
+        {% else %}
+            <button type="reset" class="btn btn-secondary">Отмена</button>
+        {% endif %}
+    </div>
+</form>

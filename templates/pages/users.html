@@ -1,0 +1,25 @@
+<section class="d-flex flex-column w-100 p-5 mx-auto align-items-center">
+    <h2>Пользователи</h2>
+    <input type="text"
+           name="user_name"
+           class="w-100 mt-3 form-control"
+           placeholder="Введите имя пользователя"
+           hx-get="/user/search"
+           hx-trigger="keyup changed delay:500ms"
+           hx-target="#user-list"
+           hx-swap="innerHTML" />
+    <div class="w-100 d-flex gap-4 mt-3">
+        <ul id="user-list"
+            class="list-group w-50"
+            hx-get="/user/list"
+            hx-trigger="load"
+            hx-target="this"
+            hx-swap="innerHTML"></ul>
+        <div class="w-50"
+             id="user-form"
+             hx-get="/user/form/create"
+             hx-target="this"
+             hx-trigger="load"
+             hx-swap="innerHTML"></div>
+    </div>
+</section>

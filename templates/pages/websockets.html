@@ -1,0 +1,14 @@
+<section class="w-75 p-5 m-auto d-flex flex-column align-items-center"
+         hx-ext="ws"
+         ws-connect="ws://127.0.0.1:8765">
+    <h2>Веб сокеты</h2>
+    <ul id="message-list"
+        class="list-group w-100 mt-3 overflow-scroll d-flex flex-column justify-content-end"
+        style="height: 300px"></ul>
+    <form ws-send class="w-100">
+        <div class="mb-3 d-flex gap-3">
+            <input type="text" name="message" class="form-control" id="message" placeholder="Ваше сообщение">
+            <button class="btn btn-primary" type="submit">Отправить</button>
+        </div>
+    </form>
+</section>

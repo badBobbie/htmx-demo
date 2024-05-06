@@ -3,12 +3,24 @@
     {
       "id": 1,
       "user_name": "User-1",
+      "login": "userOne",
+      "password": "1234",
       "role": 2
     },
     {
       "id": 2,
       "user_name": "User-2",
+      "login": "userTwo",
+      "password": "1234",
       "role": 1
+    },
+    {
+      "id": 3,
+      "user_name": "User-3",
+      "login": "userThree",
+      "password": "1234",
+      "role": 2,
+      "passsword": ""
     }
   ]
 }
