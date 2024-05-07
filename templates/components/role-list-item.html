@@ -6,9 +6,9 @@
             <span>{{ role.description }}</span>
             <div>
                 <button class="btn btn-link"
-                    hx-get="/role/form/update/{{ role.id }}"
-                    hx-target="#role-form"
-                    hx-swap="innerHTML">Редактировать</button>
+                        hx-get="/role/form/update/{{ role.id }}"
+                        hx-target="#role-form"
+                        hx-swap="innerHTML">Редактировать</button>
                 <button class="btn btn-danger"
                         hx-delete="/role/{{ role.id }}"
                         hx-target="#role_{{ role.id }}"

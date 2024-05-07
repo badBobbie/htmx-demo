@@ -8,8 +8,8 @@ async def handler(websocket, path):
         data = json.loads(str(client))
         msg = """
             <ul id="message-list"
-                class="list-group w-100 mt-3 overflow-scroll d-flex flex-column justify-content-end"
-                style="height: 300px"
+                class="list-group w-100 mt-3 d-flex flex-column"
+                style="height: 300px; overflow-y: auto"
                 hx-swap-oob="beforeend">
                 <li class="card mb-2">
                     <div class="card-body">{message}</div>
